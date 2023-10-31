@@ -1,17 +1,17 @@
 /* VENDOR */
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 /* APPLICATION */
-import { Modal } from "./Modal";
-import { ModalHeader } from "./ModalHeader";
-import { ModalInput } from "./ModalInput";
-import { ModalRow } from "./ModalRow";
-import { ModalTextarea } from "./ModalTextarea";
-import { ModalFooter } from "./ModalFooter";
-import { tasksAdded } from "../features/tasksSlice";
-import { categoriesAdded } from "../features/categoriesSlice";
+import { Modal } from './Modal';
+import { ModalHeader } from './ModalHeader';
+import { ModalInput } from './ModalInput';
+import { ModalRow } from './ModalRow';
+import { ModalTextarea } from './ModalTextarea';
+import { ModalFooter } from './ModalFooter';
+import { tasksAdded } from '../features/tasksSlice';
+import { categoriesAdded } from '../features/categoriesSlice';
 
 interface ModalCreateItemProps {
   active: boolean;
@@ -24,15 +24,15 @@ export const ModalCreateItem: React.FC<ModalCreateItemProps> = ({
 }) => {
   const dispatch = useDispatch(),
     { pathname } = useLocation(),
-    isCategories = pathname.includes("categories"),
-    [name, setName] = useState(""),
-    [selected, setSelected] = useState(""),
-    [description, setDescription] = useState("");
+    isCategories = pathname.includes('categories'),
+    [name, setName] = useState(''),
+    [selected, setSelected] = useState(''),
+    [description, setDescription] = useState('');
 
   function clearState() {
-    setName("");
-    setDescription("");
-    setSelected("");
+    setName('');
+    setDescription('');
+    setSelected('');
   }
 
   return (
@@ -40,7 +40,7 @@ export const ModalCreateItem: React.FC<ModalCreateItemProps> = ({
       <ModalHeader
         clearState={clearState}
         setActive={setActive}
-        title={isCategories ? "Создание категории" : "Создание задачи"}
+        title={isCategories ? 'Создание категории' : 'Создание задачи'}
       />
       {isCategories ? (
         <ModalInput name={name} setName={setName} size="large" />
@@ -55,6 +55,7 @@ export const ModalCreateItem: React.FC<ModalCreateItemProps> = ({
       <ModalTextarea
         description={description}
         setDescription={setDescription}
+        placeholder={isCategories ? 'Создание категории' : 'Создание задачи'}
       />
       <ModalFooter
         setActive={setActive}
