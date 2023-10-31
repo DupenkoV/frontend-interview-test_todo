@@ -1,17 +1,17 @@
 /* VENDOR */
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 /* APPLICATION */
-import { Modal } from "./Modal";
-import { ModalHeader } from "./ModalHeader";
-import { ModalRow } from "./ModalRow";
-import { ModalInput } from "./ModalInput";
-import { ModalTextarea } from "./ModalTextarea";
-import { ModalFooter } from "./ModalFooter";
-import { tasksUpdated } from "../features/tasksSlice";
-import { categoriesUpdated } from "../features/categoriesSlice";
+import { Modal } from './Modal';
+import { ModalHeader } from './ModalHeader';
+import { ModalRow } from './ModalRow';
+import { ModalInput } from './ModalInput';
+import { ModalTextarea } from './ModalTextarea';
+import { ModalFooter } from './ModalFooter';
+import { tasksUpdated } from '../features/tasksSlice';
+import { categoriesUpdated } from '../features/categoriesSlice';
 
 interface ModalEditItemProps {
   item: {
@@ -31,9 +31,9 @@ export const ModalEditItem: React.FC<ModalEditItemProps> = ({
 }) => {
   const dispatch = useDispatch(),
     { pathname } = useLocation(),
-    isCategories = pathname.includes("categories"),
+    isCategories = pathname.includes('categories'),
     [name, setName] = useState(item.name),
-    [selected, setSelected] = useState(item.category || ""),
+    [selected, setSelected] = useState(item.category || ''),
     [description, setDescription] = useState(item.description);
 
   return (
@@ -41,7 +41,7 @@ export const ModalEditItem: React.FC<ModalEditItemProps> = ({
       <ModalHeader
         setActive={setActive}
         title={
-          isCategories ? "Редактирование категории" : "Редактирование задачи"
+          isCategories ? 'Редактирование категории' : 'Редактирование задачи'
         }
       />
       {isCategories ? (

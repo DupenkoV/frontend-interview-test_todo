@@ -1,13 +1,13 @@
 /* VENDOR */
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 /* APPLICATION */
-import edit from "../icons/edit.svg";
-import remove from "../icons/remove.svg";
-import { selectAllCategories } from "../features/categoriesSlice";
-import { ModalEditItem } from "../Modal/ModalEditItem";
-import { ModalRemoveItem } from "../Modal/ModalRemoveItem";
+import edit from '../icons/edit.svg';
+import remove from '../icons/remove.svg';
+import { selectAllCategories } from '../features/categoriesSlice';
+import { ModalEditItem } from '../Modal/ModalEditItem';
+import { ModalRemoveItem } from '../Modal/ModalRemoveItem';
 
 interface ListItemProps {
   item: {
@@ -20,7 +20,7 @@ interface ListItemProps {
 
 export const ListItem: React.FC<ListItemProps> = ({ item }) => {
   const categories = useSelector(selectAllCategories),
-    [editModalActive, setEditModalActive] = useState(false)
+    [editModalActive, setEditModalActive] = useState(false);
   let [removeModalActive, setRemoveModalActive] = useState(false);
 
   return (
@@ -32,7 +32,7 @@ export const ListItem: React.FC<ListItemProps> = ({ item }) => {
             {item.category && (
               <span className="list-item-col1-row1__category">
                 {
-                  categories.find((category) => category.id === item.category)
+                  categories.find(category => category.id === item.category)
                     ?.name
                 }
               </span>
@@ -45,16 +45,14 @@ export const ListItem: React.FC<ListItemProps> = ({ item }) => {
             className="list-item-col2__btn"
             onClick={() => {
               setEditModalActive(true);
-            }}
-          >
+            }}>
             <img src={edit} alt="edit" />
           </button>
           <button
             className="list-item-col2__btn"
             onClick={() => {
-              removeModalActive = true;
-            }}
-          >
+              setRemoveModalActive(true);
+            }}>
             <img src={remove} alt="remove" />
           </button>
         </div>
