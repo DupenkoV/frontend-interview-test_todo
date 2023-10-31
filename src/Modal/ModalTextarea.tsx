@@ -1,11 +1,13 @@
 interface ModalTextareaProps {
   description: string;
   setDescription: React.Dispatch<React.SetStateAction<string>>;
+  placeholder?: string;
 }
 
 export const ModalTextarea: React.FC<ModalTextareaProps> = ({
   description,
   setDescription,
+  placeholder = 'Введите значение',
 }) => {
   return (
     <div className="modaltextarea-wrapper">
@@ -13,9 +15,9 @@ export const ModalTextarea: React.FC<ModalTextareaProps> = ({
       <textarea
         id="modaltextarea"
         className="modaltextarea"
-        placeholder="Введите описание задачи"
+        placeholder={placeholder}
         value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={e => setDescription(e.target.value)}
       />
     </div>
   );
