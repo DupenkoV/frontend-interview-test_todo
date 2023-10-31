@@ -1,8 +1,8 @@
 /* VENDOR */
-import React from "react";
+import React from 'react';
 
 /* APPLICATION */
-import "./Modal.css";
+import './Modal.css';
 
 interface ModalProps {
   item?: {
@@ -25,13 +25,14 @@ export const Modal: React.FC<ModalProps> = ({
 }) => {
   return (
     <div
-      className={active ? "modal active" : "modal"}
-      onClick={() => {
-        clearState && clearState();
-        setActive(false);
-      }}
-    >
-      <div className="modal__content" onClick={(e) => e.stopPropagation()}>
+      className={active ? 'modal active' : 'modal'}
+      onClick={e => {
+        if (e.target === e.currentTarget) {
+          clearState && clearState();
+          setActive(false);
+        }
+      }}>
+      <div className="modal__content" onClick={e => e.stopPropagation()}>
         {children}
       </div>
     </div>

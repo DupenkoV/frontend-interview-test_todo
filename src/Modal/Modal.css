@@ -106,8 +106,8 @@
   outline: none;
 }
 
-[for="modalinput"],
-[for="modaltextarea"],
+[for='modalinput'],
+[for='modaltextarea'],
 .dropdown-label {
   font-style: normal;
   display: inline-block;

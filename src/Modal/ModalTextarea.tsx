@@ -7,7 +7,7 @@ interface ModalTextareaProps {
 export const ModalTextarea: React.FC<ModalTextareaProps> = ({
   description,
   setDescription,
-  placeholder = 'Введите значение',
+  placeholder = 'Введите описание',
 }) => {
   return (
     <div className="modaltextarea-wrapper">
