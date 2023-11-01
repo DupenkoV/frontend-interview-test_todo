@@ -1,16 +1,16 @@
 /* VENDOR */
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
 /* APPLICATION */
-import { ListItem } from "./ListItem";
-import { selectAllCategories } from "../features/categoriesSlice";
+import { ListItem } from './ListItem';
+import { selectAllCategories } from '../../slices/categoriesSlice';
 
 export const Categories = () => {
   const categories = useSelector(selectAllCategories);
 
   return (
     <ul>
-      {categories.map((category) => (
+      {categories.map(category => (
         <ListItem key={category.id} item={category} />
       ))}
     </ul>

@@ -1,16 +1,11 @@
 /* VENDOR */
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
+/* TYPES */
+import { CategoriesState } from '../types/types';
 /* APPLICATION */
-import { RootState } from '../app/store';
-
-export interface CategoriesState {
-  id: string;
-  name: string;
-  description: string;
-  category: string;
-}
+import { RootState } from '../store/store';
 
 const initialState: CategoriesState[] = [
   {
@@ -61,8 +56,9 @@ export const tasksSlice = createSlice({
       state.splice(rmTaskIndex, 1);
     },
     tasksClearedCategories: (state, action) => {
-      state.map(task => {
-        if (task.category === action.payload) task.category = '';
+      return state.map(task => {
+        if (task.category === action.payload) return { ...task, category: '' };
+        return task;
       });
     },
   },

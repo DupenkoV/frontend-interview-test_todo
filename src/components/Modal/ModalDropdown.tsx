@@ -1,10 +1,10 @@
 /* VENDOR */
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 /* APPLICATION */
-import down from "../icons/down.svg";
-import { selectAllCategories } from "../features/categoriesSlice";
+import down from '../../icons/down.svg';
+import { selectAllCategories } from '../../slices/categoriesSlice';
 
 interface ModalDropdownProps {
   selected: string | undefined;
@@ -21,22 +21,21 @@ export const ModalDropdown: React.FC<ModalDropdownProps> = ({
   return (
     <div className="dropdown" onClick={() => setIsActive(!isActive)}>
       <span className="dropdown-label">Категория</span>
-      <div className={selected ? "dropdown-btn" : "dropdown-btn placeholder"}>
-        {options.find((option) => option.id === selected)?.name ||
-          "Выберите категорию"}
+      <div className={selected ? 'dropdown-btn' : 'dropdown-btn placeholder'}>
+        {options.find(option => option.id === selected)?.name ||
+          'Выберите категорию'}
         <img src={down} alt="open dropdown" />
       </div>
       {isActive && (
         <div className="dropdown-content">
-          {options.map((option) => (
+          {options.map(option => (
             <div
               className="dropdown-item"
               onClick={() => {
                 setSelected(option.id);
                 setIsActive(false);
               }}
-              key={option.id}
-            >
+              key={option.id}>
               {option.name}
             </div>
           ))}

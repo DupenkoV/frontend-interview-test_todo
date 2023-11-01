@@ -1,14 +1,14 @@
 /* VENDOR */
-import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 /* APPLICATION */
-import { Modal } from "./Modal";
-import { ModalHeader } from "./ModalHeader";
-import { ModalText } from "./ModalText";
-import { ModalFooter } from "./ModalFooter";
-import { tasksRemoved, tasksClearedCategories } from "../features/tasksSlice";
-import { categoriesRemoved } from "../features/categoriesSlice";
+import { Modal } from './Modal';
+import { ModalHeader } from './ModalHeader';
+import { ModalText } from './ModalText';
+import { ModalFooter } from './ModalFooter';
+import { tasksRemoved, tasksClearedCategories } from '../../slices/tasksSlice';
+import { categoriesRemoved } from '../../slices/categoriesSlice';
 
 interface ModalRemoveItemProps {
   item: {
@@ -28,12 +28,12 @@ export const ModalRemoveItem: React.FC<ModalRemoveItemProps> = ({
 }) => {
   const dispatch = useDispatch(),
     { pathname } = useLocation(),
-    isCategories = pathname.includes("categories"),
+    isCategories = pathname.includes('categories'),
     text = `Вы уверены, что хотите удалить задачу "${item.name}"?`;
 
   return (
     <Modal item={item} active={active} setActive={setActive}>
-      <ModalHeader setActive={setActive} title={"Удаление задачи"} />
+      <ModalHeader setActive={setActive} title={'Удаление задачи'} />
       <ModalText text={text} />
       <ModalFooter
         setActive={setActive}
