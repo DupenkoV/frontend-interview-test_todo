@@ -1,5 +1,5 @@
 /* VENDOR */
-import React from 'react';
+import React, { useRef, useState } from 'react';
 
 /* APPLICATION */
 import './Modal.css';
@@ -23,16 +23,33 @@ export const Modal: React.FC<ModalProps> = ({
   setActive,
   children,
 }) => {
+  const [maskClicked, setMaskClicked] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const handleMouseDown = (event: React.MouseEvent) => {
+    if (event.target === modalRef.current) {
+      setMaskClicked(true);
+    }
+  };
+
+  const handleMouseUp = (event: React.MouseEvent) => {
+    if (maskClicked && event.target === event.currentTarget) {
+      clearState && clearState();
+      setActive(false);
+    }
+    setMaskClicked(false);
+  };
+
   return (
     <div
       className={active ? 'modal active' : 'modal'}
-      onClick={e => {
-        if (e.target === e.currentTarget) {
-          clearState && clearState();
-          setActive(false);
-        }
-      }}>
-      <div className="modal__content" onClick={e => e.stopPropagation()}>
+      ref={modalRef}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}>
+      <div
+        className="modal__content"
+        onClick={e => {
+          e.stopPropagation();
+        }}>
         {children}
       </div>
     </div>
