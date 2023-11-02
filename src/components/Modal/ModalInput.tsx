@@ -3,7 +3,7 @@ import important from '../../icons/important.svg';
 interface ModalInputProps {
   name: string;
   setName: React.Dispatch<React.SetStateAction<string>>;
-  size?: string;
+  size?: 'large';
 }
 
 export const ModalInput: React.FC<ModalInputProps> = ({

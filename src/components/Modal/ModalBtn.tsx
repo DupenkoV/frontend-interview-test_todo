@@ -1,4 +1,6 @@
-import "./ModalBtn.css";
+import './ModalBtn.css';
+import cn from 'classnames';
+import text from 'assets/text/modal.json';
 
 interface ModalBtnProps {
   type?: string;
@@ -13,12 +15,11 @@ export const ModalBtn: React.FC<ModalBtnProps> = ({
   size,
   onClick,
 }) => {
-  const btnClass =
-    type === "primary"
-      ? size === "large"
-        ? "modalbtn primary large"
-        : "modalbtn primary"
-      : "modalbtn";
+  const btnClass = cn(text.classes.modalbtn, {
+    large: size === text.classes.large,
+    primary: type === text.classes.primary,
+  });
+
   return (
     <button className={btnClass} onClick={onClick}>
       {children}

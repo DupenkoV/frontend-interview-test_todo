@@ -12,17 +12,13 @@ import { ModalTextarea } from './ModalTextarea';
 import { ModalFooter } from './ModalFooter';
 import { tasksUpdated } from '../../slices/tasksSlice';
 import { categoriesUpdated } from '../../slices/categoriesSlice';
+import { ModalProps } from './Modal';
+import { basicFields } from '../../types/types';
+import text from 'assets/text/modal.json';
 
-interface ModalEditItemProps {
-  item: {
-    id: string;
-    name: string;
-    description: string;
-    category?: string;
-  };
-  active: boolean;
-  setActive: React.Dispatch<React.SetStateAction<boolean>>;
-}
+type ModalEditItemProps = Pick<ModalProps, 'active' | 'setActive'> & {
+  item: basicFields;
+};
 
 export const ModalEditItem: React.FC<ModalEditItemProps> = ({
   item,
@@ -36,14 +32,13 @@ export const ModalEditItem: React.FC<ModalEditItemProps> = ({
     [selected, setSelected] = useState(item.category || ''),
     [description, setDescription] = useState(item.description);
 
+  const title = isCategories
+    ? text.header.title.categoryEdit
+    : text.header.title.taskEdit;
+
   return (
-    <Modal item={item} active={active} setActive={setActive}>
-      <ModalHeader
-        setActive={setActive}
-        title={
-          isCategories ? 'Редактирование категории' : 'Редактирование задачи'
-        }
-      />
+    <Modal active={active} setActive={setActive}>
+      <ModalHeader setActive={setActive} title={title} />
       {isCategories ? (
         <ModalInput name={name} setName={setName} size="large" />
       ) : (
@@ -60,7 +55,7 @@ export const ModalEditItem: React.FC<ModalEditItemProps> = ({
       />
       <ModalFooter
         setActive={setActive}
-        submitBtnText="Сохранить"
+        submitBtnText={text.footer.buttons.save}
         size="large"
         onSubmit={() => {
           dispatch(

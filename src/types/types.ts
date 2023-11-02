@@ -1,8 +1,6 @@
-interface CategoriesState {
+export interface basicFields {
   id: string;
   name: string;
   description: string;
   category?: string;
 }
-
-export type { CategoriesState };

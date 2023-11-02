@@ -1,10 +1,10 @@
-import { ModalBtn } from "./ModalBtn";
-
+import { ModalBtn } from './ModalBtn';
+import text from 'assets/text/modal.json';
 interface ModalFooterProps {
   clearState?(): void;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
   submitBtnText: string;
-  size?: string;
+  size?: 'large';
   onSubmit: () => void;
 }
 
@@ -16,16 +16,15 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
   onSubmit,
 }) => {
   return (
-    <footer className="modal__content-footer">
-      <ModalBtn type="primary" size={size || ""} onClick={onSubmit}>
+    <footer className={text.classes.modalContentFooter}>
+      <ModalBtn type="primary" size={size || ''} onClick={onSubmit}>
         {submitBtnText}
       </ModalBtn>
       <ModalBtn
         onClick={() => {
           clearState && clearState();
           setActive(false);
-        }}
-      >
+        }}>
         Закрыть
       </ModalBtn>
     </footer>

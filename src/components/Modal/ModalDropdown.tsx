@@ -1,6 +1,8 @@
 /* VENDOR */
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import text from 'assets/text/modal.json';
+import cn from 'classnames';
 
 /* APPLICATION */
 import down from '../../icons/down.svg';
@@ -18,19 +20,25 @@ export const ModalDropdown: React.FC<ModalDropdownProps> = ({
   const [isActive, setIsActive] = useState(false),
     options = useSelector(selectAllCategories);
 
+  const dropdownBtnClassNames = cn(text.classes.dropdownBtn, {
+    placeholder: !selected,
+  });
+
   return (
-    <div className="dropdown" onClick={() => setIsActive(!isActive)}>
-      <span className="dropdown-label">Категория</span>
-      <div className={selected ? 'dropdown-btn' : 'dropdown-btn placeholder'}>
+    <div
+      className={text.classes.dropdown}
+      onClick={() => setIsActive(!isActive)}>
+      <span className={text.classes.dropdownLabel}>Категория</span>
+      <div className={dropdownBtnClassNames}>
         {options.find(option => option.id === selected)?.name ||
-          'Выберите категорию'}
+          text.dropdowns.category}
         <img src={down} alt="open dropdown" />
       </div>
       {isActive && (
-        <div className="dropdown-content">
+        <div className={text.classes.dropdownContent}>
           {options.map(option => (
             <div
-              className="dropdown-item"
+              className={text.classes.dropdownItem}
               onClick={() => {
                 setSelected(option.id);
                 setIsActive(false);

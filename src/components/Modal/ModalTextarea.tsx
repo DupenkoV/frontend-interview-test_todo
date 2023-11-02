@@ -1,3 +1,5 @@
+import text from 'assets/text/modal.json';
+
 interface ModalTextareaProps {
   description: string;
   setDescription: React.Dispatch<React.SetStateAction<string>>;
@@ -10,11 +12,11 @@ export const ModalTextarea: React.FC<ModalTextareaProps> = ({
   placeholder = 'Введите описание',
 }) => {
   return (
-    <div className="modaltextarea-wrapper">
-      <label htmlFor="modaltextarea">Описание</label>
+    <div className={text.classes.modaltextareaWrapper}>
+      <label htmlFor={text.classes.modaltextarea}>Описание</label>
       <textarea
-        id="modaltextarea"
-        className="modaltextarea"
+        id={text.classes.modaltextarea}
+        className={text.classes.modaltextarea}
         placeholder={placeholder}
         value={description}
         onChange={e => setDescription(e.target.value)}

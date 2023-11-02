@@ -1,0 +1,57 @@
+{
+  "classes": {
+    "modal": "modal",
+    "active": "active",
+    "content": "modal__content",
+    "modalbtn": "modalbtn",
+    "large": "large",
+    "primary": "primary",
+    "dropdown": "dropdown",
+    "dropdownLabel": "dropdown-label",
+    "dropdownBtn": "dropdown-btn",
+    "placeholder": "placeholder",
+    "dropdownContent": "dropdown-content",
+    "dropdownItem": "dropdown-item",
+    "header": "header",
+    "headerTitle": "header-title",
+    "headerNav": "header-nav",
+    "headerList": "header-list",
+    "headerListItem": "header-list-item",
+    "headerListItemActive": "header-list-item-active",
+    "modalContentFooter": "modal__content-footer",
+    "modalContentHeader": "modal__content-header",
+    "modalContentTitle": "modal__content-title",
+    "modalContentHeaderBtn": "modal__content-header__btn",
+    "modalContentRow": "modal__content_row",
+    "modalContentText": "modal__content-text",
+    "modaltextareaWrapper": "modaltextarea-wrapper",
+    "modaltextarea": "modaltextarea",
+    "listItem": "list-item",
+    "listItemCol1": "list-item-col1",
+    "listItemCol1Row1": "list-item-col1-row1",
+    "listItemCol1Row1Title": "list-item-col1-row1__title",
+    "listItemCol1Row1Category": "list-item-col1-row1__category",
+    "listItemCol1Row2": "list-item-col1-row2",
+    "listItemCol2": "list-item-col2",
+    "listItemCol2Btn": "list-item-col2__btn"
+  },
+  "header": {
+    "title": {
+      "categoryCreate": "Создание категории",
+      "taskCreate": "Создание задачи",
+      "categoryAdd": "Добавить категорию",
+      "taskAdd": "Добавить задачу",
+      "categoryEdit": "Редактирование категории",
+      "taskEdit": "Редактирование задачи"
+    }
+  },
+  "footer": {
+    "buttons": {
+      "create": "Создать",
+      "save": "Сохранить"
+    }
+  },
+  "dropdowns": {
+    "category": "Выберите категорию"
+  }
+}

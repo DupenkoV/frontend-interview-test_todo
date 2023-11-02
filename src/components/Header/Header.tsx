@@ -1,6 +1,7 @@
 /* VENDOR */
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import text from 'assets/text/modal.json';
 
 /* APPLICATION */
 import './Header.css';
@@ -11,11 +12,15 @@ export const Header = () => {
     isCategories = pathname.includes('categories'),
     [createModalActive, setCreateModalActive] = useState(false);
 
+  const categoryNames = isCategories
+    ? text.header.title.categoryAdd
+    : text.header.title.taskAdd;
+
   return (
-    <header className="header">
-      <h1 className="header-title">ToDo List</h1>
-      <nav className="header-nav">
-        <ul className="header-list">
+    <header className={text.classes.header}>
+      <h1 className={text.classes.headerTitle}>ToDo List</h1>
+      <nav className={text.classes.headerNav}>
+        <ul className={text.classes.headerList}>
           <li
             className={
               !isCategories
@@ -38,7 +43,7 @@ export const Header = () => {
           onClick={() => {
             setCreateModalActive(true);
           }}>
-          {isCategories ? 'Добавить категорию' : 'Добавить задачу'}
+          {categoryNames}
         </button>
       </nav>
       <ModalCreateItem

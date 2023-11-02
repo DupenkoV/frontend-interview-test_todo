@@ -9,17 +9,12 @@ import { ModalText } from './ModalText';
 import { ModalFooter } from './ModalFooter';
 import { tasksRemoved, tasksClearedCategories } from '../../slices/tasksSlice';
 import { categoriesRemoved } from '../../slices/categoriesSlice';
+import { ModalProps } from './Modal';
+import { basicFields } from 'types/types';
 
-interface ModalRemoveItemProps {
-  item: {
-    id: string;
-    name: string;
-    description: string;
-    category?: string;
-  };
-  active: boolean;
-  setActive: React.Dispatch<React.SetStateAction<boolean>>;
-}
+type ModalRemoveItemProps = Pick<ModalProps, 'active' | 'setActive'> & {
+  item: basicFields;
+};
 
 export const ModalRemoveItem: React.FC<ModalRemoveItemProps> = ({
   item,
@@ -32,7 +27,7 @@ export const ModalRemoveItem: React.FC<ModalRemoveItemProps> = ({
     text = `Вы уверены, что хотите удалить задачу "${item.name}"?`;
 
   return (
-    <Modal item={item} active={active} setActive={setActive}>
+    <Modal active={active} setActive={setActive}>
       <ModalHeader setActive={setActive} title={'Удаление задачи'} />
       <ModalText text={text} />
       <ModalFooter

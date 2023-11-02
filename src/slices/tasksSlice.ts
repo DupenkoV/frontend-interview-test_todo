@@ -3,11 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
 /* TYPES */
-import { CategoriesState } from '../types/types';
+import { basicFields } from '../types/types';
 /* APPLICATION */
 import { RootState } from '../store/store';
 
-const initialState: CategoriesState[] = [
+const initialState: basicFields[] = [
   {
     id: 'dcf6c7ea-56fe-4e36-960b-686ebf86d651',
     name: 'Задача',
@@ -49,7 +49,7 @@ export const tasksSlice = createSlice({
       }
     },
     tasksRemoved: (state, action) => {
-      let rm = (el: CategoriesState, i: number, arr: CategoriesState[]) =>
+      let rm = (el: basicFields, i: number, arr: basicFields[]) =>
           el.id === action.payload,
         rmTaskIndex = state.findIndex(rm);
 

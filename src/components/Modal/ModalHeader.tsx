@@ -1,5 +1,5 @@
 import close from '../../icons/close.svg';
-
+import text from 'assets/text/modal.json';
 interface ModalHeaderProps {
   clearState?(): void;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,10 +12,10 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
   setActive,
 }) => {
   return (
-    <header className="modal__content-header">
-      <h4 className="modal__content-title">{title}</h4>
+    <header className={text.classes.modalContentHeader}>
+      <h4 className={text.classes.modalContentTitle}>{title}</h4>
       <button
-        className="modal__content-header__btn"
+        className={text.classes.modalContentHeaderBtn}
         onClick={() => {
           clearState && clearState();
           setActive(false);

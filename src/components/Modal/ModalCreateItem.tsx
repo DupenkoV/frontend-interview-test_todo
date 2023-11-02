@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-
+import text from 'assets/text/modal.json';
 /* APPLICATION */
 import { Modal } from './Modal';
 import { ModalHeader } from './ModalHeader';
@@ -12,11 +12,9 @@ import { ModalTextarea } from './ModalTextarea';
 import { ModalFooter } from './ModalFooter';
 import { tasksAdded } from '../../slices/tasksSlice';
 import { categoriesAdded } from '../../slices/categoriesSlice';
+import { ModalProps } from './Modal';
 
-interface ModalCreateItemProps {
-  active: boolean;
-  setActive: React.Dispatch<React.SetStateAction<boolean>>;
-}
+type ModalCreateItemProps = Pick<ModalProps, 'active' | 'setActive'>;
 
 export const ModalCreateItem: React.FC<ModalCreateItemProps> = ({
   active,
@@ -28,6 +26,9 @@ export const ModalCreateItem: React.FC<ModalCreateItemProps> = ({
     [name, setName] = useState(''),
     [selected, setSelected] = useState(''),
     [description, setDescription] = useState('');
+  const title_placeholder = isCategories
+    ? text.header.title.categoryCreate
+    : text.header.title.taskCreate;
 
   function clearState() {
     setName('');
@@ -40,7 +41,7 @@ export const ModalCreateItem: React.FC<ModalCreateItemProps> = ({
       <ModalHeader
         clearState={clearState}
         setActive={setActive}
-        title={isCategories ? 'Создание категории' : 'Создание задачи'}
+        title={title_placeholder}
       />
       {isCategories ? (
         <ModalInput name={name} setName={setName} size="large" />
@@ -55,12 +56,12 @@ export const ModalCreateItem: React.FC<ModalCreateItemProps> = ({
       <ModalTextarea
         description={description}
         setDescription={setDescription}
-        placeholder={isCategories ? 'Создание категории' : 'Создание задачи'}
+        placeholder={title_placeholder}
       />
       <ModalFooter
         setActive={setActive}
         clearState={clearState}
-        submitBtnText="Создать"
+        submitBtnText={text.footer.buttons.create}
         size="large"
         onSubmit={
           name

@@ -1,7 +1,7 @@
 /* VENDOR */
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-
+import text from 'assets/text/modal.json';
 /* APPLICATION */
 import edit from '../../icons/edit.svg';
 import remove from '../../icons/remove.svg';
@@ -25,12 +25,12 @@ export const ListItem: React.FC<ListItemProps> = ({ item }) => {
 
   return (
     <>
-      <li className="list-item">
-        <div className="list-item-col1">
-          <div className="list-item-col1-row1">
-            <h3 className="list-item-col1-row1__title">{item.name}</h3>
+      <li className={text.classes.listItem}>
+        <div className={text.classes.listItemCol1}>
+          <div className={text.classes.listItemCol1Row1}>
+            <h3 className={text.classes.listItemCol1Row1Title}>{item.name}</h3>
             {item.category && (
-              <span className="list-item-col1-row1__category">
+              <span className={text.classes.listItemCol1Row1Category}>
                 {
                   categories.find(category => category.id === item.category)
                     ?.name
@@ -38,18 +38,20 @@ export const ListItem: React.FC<ListItemProps> = ({ item }) => {
               </span>
             )}
           </div>
-          <div className="list-item-col1-row2">{item.description}</div>
+          <div className={text.classes.listItemCol1Row2}>
+            {item.description}
+          </div>
         </div>
-        <div className="list-item-col2">
+        <div className={text.classes.listItemCol2}>
           <button
-            className="list-item-col2__btn"
+            className={text.classes.listItemCol2Btn}
             onClick={() => {
               setEditModalActive(true);
             }}>
             <img src={edit} alt="edit" />
           </button>
           <button
-            className="list-item-col2__btn"
+            className={text.classes.listItemCol2Btn}
             onClick={() => {
               setRemoveModalActive(true);
             }}>
